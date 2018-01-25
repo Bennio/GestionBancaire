@@ -1,14 +1,19 @@
 package domain;
 
 public class Comptes {
-	private int numCompte;
+	private int numCompte ;
 	private int idTitulaireCompte;
 	private String nomTitulaire;
 	private double solde;
 	private double taux;
+	
+	public Comptes( ) {
+	}
 
-	public Comptes(int numCompte ) {
+	public Comptes(int numCompte, int idTitulaireCompte, String nomTitulaire) {
 		this.numCompte = numCompte;
+		this.idTitulaireCompte = idTitulaireCompte;
+		this.nomTitulaire = nomTitulaire;
 	}
 
 	/**
@@ -79,6 +84,10 @@ public class Comptes {
 	 */
 	public void setTaux(double taux) {
 		this.taux = taux;
+	}
+	
+	public void creerCompte(int numCompte, int idTitulaireCompte ) {
+		
 	}
 	
 
