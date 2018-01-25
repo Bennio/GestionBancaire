@@ -1,13 +1,14 @@
 package presentation;
-
+import domain.Comptes;
 public class Dash {
 
 	public Dash() {
-		// TODO Auto-generated constructor stub
 	}
 
 	public static void main(String[] args) {
-		// TODO Auto-generated method stub
+		Comptes compte = new Comptes(12345);
+		System.out.println(compte.getNumCompte());
+		
 
 	}
 
