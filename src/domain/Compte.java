@@ -1,9 +1,14 @@
 package domain;
 
+
+
 public class Compte {
+	int numAccount;
+	int id;
 
 	public Compte() {
-		// TODO Auto-generated constructor stub
+		super();
+		
 	}
 
 }
