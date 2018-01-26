@@ -4,16 +4,31 @@ public class Comptes {
 	private int numCompte ;
 	private int idTitulaireCompte;
 	private String nomTitulaire;
-	private double solde;
-	private double taux;
+	private Double solde;
+	private Double taux;
 	
 	public Comptes( ) {
 	}
 
-	public Comptes(int numCompte, int idTitulaireCompte, String nomTitulaire) {
+	public Comptes(int numCompte, int idTitulaireCompte, String nomTitulaire, Double solde) {
 		this.numCompte = numCompte;
 		this.idTitulaireCompte = idTitulaireCompte;
 		this.nomTitulaire = nomTitulaire;
+		this.solde = solde;
+	}
+	
+	public void deposer(Double depot) {
+		System.out.println("---- Deposer un montant  de " +depot);
+		this.solde += depot;
+	}
+	
+	public void retrait(Double r) {
+		System.out.println("---- Retirer un montant de " + r);
+		this.solde -= r;
+	}
+	
+	public void afficher() {
+		System.out.println("Le solde de votre compte est " + this.solde);
 	}
 
 	/**
