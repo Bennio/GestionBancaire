@@ -1,49 +1,70 @@
 package domain;
 
+import javax.swing.plaf.synth.SynthSpinnerUI;
+
 public class Comptes {
 	private int numCompte ;
 	private int idTitulaireCompte;
 	private String nomTitulaire;
-	private Double solde;
+	static Double solde = 0.0;
 	private Double taux;
+	
+	static public int getTransaction() {
+		try {
+			byte [] tampon = new byte[512];
+			System.in.read(tampon);
+			String c = new String(tampon);
+			c = c.trim();
+			
+			return Integer.parseInt(c);
+		}catch(Exception e) {
+			System.out.println("Erreur");
+		}
+		return 0;
+	}
 	
 	public Comptes( ) {
 	}
 
-	public Comptes(int numCompte, int idTitulaireCompte, String nomTitulaire, Double solde) {
-		this.numCompte = numCompte;
-		this.idTitulaireCompte = idTitulaireCompte;
-		this.nomTitulaire = nomTitulaire;
-		this.solde = solde;
-	}
-	
-	public void deposer(Double depot) {
-		System.out.println("---- Deposer un montant  de " +depot);
-		this.solde += depot;
-	}
-	
-	public void retrait(Double r) {
-		System.out.println("---- Retirer un montant de " + r);
-		this.solde -= r;
-	}
+//	public Comptes(int numCompte, int idTitulaireCompte, String nomTitulairee, Double solde) {
+//		this.numCompte = numCompte;
+//		this.idTitulaireCompte = idTitulaireCompte;
+//		this.nomTitulaire = nomTitulaire;
+//		this.solde = solde;
+//	
+//	}
 	
 	public void afficher() {
-		System.out.println("Le solde de votre compte est " + this.solde);
+		System.out.println("Le solde de votre compte est " + solde);
 	}
+	
+	public void deposer() {
+		System.out.println("---- Deposer un montant  de " );
+		int depot = getTransaction();
+		solde += depot;
+	}
+	
+	public void retrait() {
+		System.out.println("---- Retirer un montant de " );
+		int r = getTransaction();
+		solde -= r;
+	}
+	
+	
 
-	/**
-	 * @return the numCompte
-	 */
-	public int getNumCompte() {
-		return numCompte;
-	}
-
-	/**
-	 * @param numCompte the numCompte to set
-	 */
-	public void setNumCompte(int numCompte) {
-		this.numCompte = numCompte;
-	}
+//	/**
+//	 * @return the numCompte
+//	 */
+//	public int getNumCompte() {
+//		return numCompte;
+//	}
+//
+//	/**
+//	 * @param numCompte the numCompte to set
+//	 */
+//	public void setNumCompte(int numCompte) {
+//		this.numCompte = numCompte;
+//	}
 
 	/**
 	 * @return the idTitulaireCompte
