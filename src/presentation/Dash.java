@@ -10,7 +10,7 @@ import java.util.Set;
 
 import javax.swing.plaf.synth.SynthSeparatorUI;
 
-import domain.Bank;
+
 import domain.Comptes;
 
 import domain.Menu;
@@ -28,8 +28,7 @@ public class Dash {
 
 		char reponse = 'o';
 		int nombreClients = 0;
-		Bank bank = new Bank();
-		// Clients[] c = bank.getClients();
+
 		/*********************************************************/
 		do {
 			Menu menu = new Menu();
@@ -85,7 +84,7 @@ public class Dash {
 				break;
 			case 2:
 
-				// Comptes Compte = new Comptes();
+			
 
 				System.out.println("Mettre le numero de Compte :");
 				int numCompte = Integer.parseInt(bufferedReader.readLine());
@@ -176,11 +175,14 @@ public class Dash {
 					System.err.println("Compte introuvable.");
 				} else {
 					boolean trouver = false;
+					System.out.println("Le pourcentage d'Interet :");
+					int interet = Integer.parseInt(bufferedReader.readLine());
 					for (Comptes compte2 : compteList) {
 						int tempCompte = compte2.getNumCompte();
+						
 						if (tempCompte == numCompte) {
 
-							compte2.calculInteret();
+							compte2.calculInteret(interet);
 							trouver = true;
 						}
 

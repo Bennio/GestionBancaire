@@ -31,31 +31,7 @@ public class Comptes {
 		this.solde = solde;
 	}
 
-	// public Comptes(int numCompte) {
-	// this.numCompte = numCompte;
-	// }
-	//
-	// public Comptes(double solde, int numCompte) {
-	// if (solde > 50) {
-	// this.solde = solde;
-	// } else {
-	// this.solde = 50.0;
-	// }
-	// this.numCompte = numCompte;
-	//
-	// }
-	//
-	// public Comptes(double solde, int numCompte, int idTitulaireCompte, String
-	// nomTitulaire) {
-	// if (solde > 50) {
-	// this.solde = solde;
-	// } else {
-	// this.solde = 50.0;
-	// }
-	// this.numCompte = numCompte;
-	// this.idTitulaireCompte = idTitulaireCompte;
-	// this.nomTitulaire = nomTitulaire;
-	// }
+
 
 	public void deposer(float qte) {
 		if (qte > 0) {
@@ -72,12 +48,12 @@ public class Comptes {
 	 */
 	public void retrait(float qte) {
 		if (qte >= 0) {
-			Bank bank = new Bank();
+			
 			float tempSolde = solde;
-			tempSolde = tempSolde - qte - bank.getCoutTransaction();
+			tempSolde = tempSolde - qte;
 			if (tempSolde >= 50) {
-				solde = solde - qte - bank.getCoutTransaction();
-				System.out.println("un montant de " + qte + " a ete Retire sur ton compte. " + "Le nouveau solde est "
+				solde = solde - qte;
+				System.out.println("un montant de " + qte + " Euros a ete Retire sur ton compte. " + "Le nouveau solde est "
 						+ solde + " Euros");
 			} else {
 				System.err.println("Solde insuffisant pour retirer " + qte + " Euros");
@@ -88,13 +64,13 @@ public class Comptes {
 
 	}
 
-	public void calculInteret() {
-		Bank bank = new Bank();
+	public void calculInteret(int tauxInteret) {
+//		Bank bank = new Bank();
 		float solde = getSolde();
-		float interet = solde * bank.getTauxDInteret() / 100;
+		float interet = solde * tauxInteret / 100;
 		float totalSolde = solde + interet;
 		setSolde(totalSolde);
-		System.out.println("Interet = " + interet + " solde apres ajout d'Interet = " + totalSolde);
+		System.out.println("Interet "+tauxInteret+"% est " + interet + " Euros, solde apres ajout d'Interet = " + totalSolde);
 
 	}
 
