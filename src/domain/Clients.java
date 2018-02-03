@@ -9,21 +9,20 @@ public class Clients {
 		this.nomTitulaire = nomTitulaire;
 		this.idTitulaire = idTitulaire;
 		this.comptes = comptes;
-		
+
 	}
 
 	public void display() {
-        System.out.println("Nom: " + nomTitulaire +" ID: " + idTitulaire +  ", Numero Compte: " + comptes.getNumCompte() + ", Solde: " + comptes.getSolde());
-    }
-	
+		System.out.println("Nom: " + nomTitulaire + " ID: " + idTitulaire + ", Numero Compte: " + comptes.getNumCompte()
+				+ ", Solde: " + comptes.getSolde());
+	}
+
 	/**
 	 * @return the nomTitulaire
 	 */
 	public String getNomTitulaire() {
 		return nomTitulaire;
 	}
-
-
 
 	/**
 	 * @return the idTitulaire
@@ -32,16 +31,11 @@ public class Clients {
 		return idTitulaire;
 	}
 
-
-
 	/**
 	 * @return the cpt
 	 */
 	public Comptes getComptes() {
 		return comptes;
 	}
-
-
-	
 
 }

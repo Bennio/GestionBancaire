@@ -3,63 +3,61 @@ package domain;
 //import javax.swing.plaf.synth.SynthSpinnerUI;
 
 public class Comptes {
-	
 
 	private int numCompte;
-	private int idTitulaireCompte;
+	private int idTitulaire;
 	private String nomTitulaire;
-	private Double solde = 50.0;
+	private float solde;
 	// private double taux;
 
 	/**
-	 * 
+	 * Constructeur par defaut de la classe Compte
 	 */
 	public Comptes() {
 		super();
 	}
-	
+
 	/**
 	 * @param numCompte
 	 * @param idTitulaireCompte
 	 * @param nomTitulaire
 	 * @param solde
 	 */
-	public Comptes(int numCompte, int idTitulaireCompte, String nomTitulaire, Double solde) {
+	public Comptes(int numCompte, int idTitulaire, String nomTitulaire, float solde) {
 		super();
 		this.numCompte = numCompte;
-		this.idTitulaireCompte = idTitulaireCompte;
+		this.idTitulaire = idTitulaire;
 		this.nomTitulaire = nomTitulaire;
 		this.solde = solde;
 	}
-	
-	
 
-//	public Comptes(int numCompte) {
-//		this.numCompte = numCompte;
-//	}
-//
-//	public Comptes(double solde, int numCompte) {
-//		if (solde > 50) {
-//			this.solde = solde;
-//		} else {
-//			this.solde = 50.0;
-//		}
-//		this.numCompte = numCompte;
-//
-//	}
-//
-//	public Comptes(double solde, int numCompte, int idTitulaireCompte, String nomTitulaire) {
-//		if (solde > 50) {
-//			this.solde = solde;
-//		} else {
-//			this.solde = 50.0;
-//		}
-//		this.numCompte = numCompte;
-//		this.idTitulaireCompte = idTitulaireCompte;
-//		this.nomTitulaire = nomTitulaire;
-//	}
+	// public Comptes(int numCompte) {
+	// this.numCompte = numCompte;
+	// }
+	//
+	// public Comptes(double solde, int numCompte) {
+	// if (solde > 50) {
+	// this.solde = solde;
+	// } else {
+	// this.solde = 50.0;
+	// }
+	// this.numCompte = numCompte;
+	//
+	// }
+	//
+	// public Comptes(double solde, int numCompte, int idTitulaireCompte, String
+	// nomTitulaire) {
+	// if (solde > 50) {
+	// this.solde = solde;
+	// } else {
+	// this.solde = 50.0;
+	// }
+	// this.numCompte = numCompte;
+	// this.idTitulaireCompte = idTitulaireCompte;
+	// this.nomTitulaire = nomTitulaire;
+	// }
 
-	public void deposer(double qte) {
+	public void deposer(float qte) {
 		if (qte > 0) {
 			solde = solde + qte;
 			System.out.println(
@@ -68,20 +66,35 @@ public class Comptes {
 			System.err.println("Le depot ne doit pas etre negatif");
 		}
 	}
-
-	public void retrait(double qte) {
+	
+	/**
+	 * @param qte
+	 */
+	public void retrait(float qte) {
 		if (qte >= 0) {
 			Bank bank = new Bank();
-			double tempSolde = solde;
+			float tempSolde = solde;
 			tempSolde = tempSolde - qte - bank.getCoutTransaction();
 			if (tempSolde >= 50) {
 				solde = solde - qte - bank.getCoutTransaction();
+				System.out.println("un montant de " + qte + " a ete Retire sur ton compte. " + "Le nouveau solde est "
+						+ solde + " Euros");
 			} else {
 				System.err.println("Solde insuffisant pour retirer " + qte + " Euros");
 			}
 		} else {
 			System.err.println("Il faut rentrer un nombre positif");
 		}
+
+	}
+
+	public void calculInteret() {
+		Bank bank = new Bank();
+		float solde = getSolde();
+		float interet = solde * bank.getTauxDInteret() / 100;
+		float totalSolde = solde + interet;
+		setSolde(totalSolde);
+		System.out.println("Interet = " + interet + " solde apres ajout d'Interet = " + totalSolde);
 
 	}
 
@@ -96,7 +109,7 @@ public class Comptes {
 	 * @return the idTitulaireCompte
 	 */
 	public int getIdTitulaireCompte() {
-		return idTitulaireCompte;
+		return idTitulaire;
 	}
 
 	/**
@@ -109,7 +122,7 @@ public class Comptes {
 	/**
 	 * @return the solde
 	 */
-	public double getSolde() {
+	public float getSolde() {
 		return solde;
 	}
 
@@ -125,8 +138,8 @@ public class Comptes {
 	 * @param idTitulaireCompte
 	 *            the idTitulaireCompte to set
 	 */
-	public void setIdTitulaireCompte(int idTitulaireCompte) {
-		this.idTitulaireCompte = idTitulaireCompte;
+	public void setIdTitulaire(int idTitulaire) {
+		this.idTitulaire = idTitulaire;
 	}
 
 	/**
@@ -141,18 +154,18 @@ public class Comptes {
 	 * @param solde
 	 *            the solde to set
 	 */
-	public void setSolde(Double solde) {
+	public void setSolde(float solde) {
 		this.solde = solde;
 	}
 
-	/* (non-Javadoc)
+	/*
+	 * (non-Javadoc)
+	 * 
 	 * @see java.lang.Object#toString()
 	 */
 	@Override
 	public String toString() {
-		return numCompte + " " + idTitulaireCompte + " " + nomTitulaire + " " + getSolde();
+		return numCompte + " " + idTitulaire + " " + nomTitulaire + " " + getSolde();
 	}
-
-	
 
 }

@@ -1,26 +1,27 @@
 package domain;
 
 public class Bank {
-	private double tauxDInteret = 5.5;
-	private double coutTransaction = 3;
+	private float tauxDInteret = 5f;
+	private float coutTransaction = 3f;
 	private Clients[] clients = new Clients[2500];
-	
-	public void calculInteret(Clients clients) {
+
+	/*public void calculInteret(Clients clients) {
 		Comptes cpt = clients.getComptes();
 		double solde = cpt.getSolde();
 		double interet = solde * tauxDInteret / 100;
 		double totalSolde = solde + interet;
-		System.out.println("Interet = "+interet+ " solde apres ajout d'Interet = "+totalSolde);
+		System.out.println("Interet = " + interet + " solde apres ajout d'Interet = " + totalSolde);
+
+	}*/
 	
-	}
-	
-	public double getTauxDInteret() {
+	public float getTauxDInteret() {
 		return tauxDInteret;
 	}
-	
-	public double getCoutTransaction() {
+
+	public float getCoutTransaction() {
 		return coutTransaction;
 	}
+
 	public Clients[] getClients() {
 		return clients;
 	}
