@@ -3,17 +3,12 @@ package presentation;
 import java.io.BufferedReader;
 import java.io.InputStreamReader;
 import java.util.ArrayList;
-import java.util.HashSet;
 import java.util.List;
 import java.util.Scanner;
-import java.util.Set;
-
-import javax.swing.plaf.synth.SynthSeparatorUI;
-
 
 import domain.Comptes;
-
 import domain.Menu;
+import domain.Transactions;
 
 public class Dash {
 
@@ -25,9 +20,11 @@ public class Dash {
 		int userChoice;
 
 		List<Comptes> compteList = new ArrayList<Comptes>();
+//		List<String> transactionList = new ArrayList<String>();
+		Transactions transactions = new Transactions();
 
 		char reponse = 'o';
-		int nombreClients = 0;
+	
 
 		/*********************************************************/
 		do {
@@ -74,13 +71,9 @@ public class Dash {
 					System.out.println(compte);
 				}
 
-				System.out.println("Nombre de Compte : " + compteList.size());
+//				System.out.println("Nombre de Compte : " + compteList.size());
 
-				// c[nombreClients] = clients;
-				// System.out.println("Nom du titulaire :" + nomTitulaire + "\n l'ID du
-				// Titulaire :" + idTitulaire + "\nLe Numero du Compte :" + numCompte + " \nLa
-				// balance :"+ solde +"\n ont ete ajoutes");
-				// nombreClients++;
+				
 				break;
 			case 2:
 
@@ -98,8 +91,8 @@ public class Dash {
 						if (tempCompte == numCompte) {
 							System.err.println("Deposer un montant de :");
 							Scanner montant = new Scanner(System.in);
-							float mDepot = montant.nextFloat();
-							compte2.deposer(mDepot);
+							float montantDepot = montant.nextFloat();
+							compte2.deposer(montantDepot);
 
 							trouver = true;
 						}
@@ -196,11 +189,13 @@ public class Dash {
 				
 				break;
 			case 6:
-
-				for (Comptes compte : compteList) {
-
-					System.out.println(compte);
-				}
+//				transactio
+				//System.out.println("Moi");
+				transactions.afficherHistory();
+			
+//				Comptes compte = new Comptes();
+				
+				
 				break;
 			case 7:
 				System.out.println("Au Revoir");

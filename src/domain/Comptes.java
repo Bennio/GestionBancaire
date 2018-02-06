@@ -1,6 +1,6 @@
 package domain;
 
-//import javax.swing.plaf.synth.SynthSpinnerUI;
+
 
 public class Comptes {
 
@@ -31,13 +31,17 @@ public class Comptes {
 		this.solde = solde;
 	}
 
-
+	Transactions transactions = new Transactions();
 
 	public void deposer(float qte) {
+		
 		if (qte > 0) {
 			solde = solde + qte;
-			System.out.println(
-					"un montant de " + qte + " a ete Depose sur ton compte. " + "Le nouveau solde est " + solde);
+			String messageDepot = "un montant de " + qte + " a ete Depose sur le compte " +getNumCompte()+" de "+getNomTitulaire()+ ". Le nouveau solde est " + solde;
+//			String messageDepot = "montant";
+			System.out.println(messageDepot);
+			
+			transactions.history(messageDepot);
 		} else {
 			System.err.println("Le depot ne doit pas etre negatif");
 		}
@@ -53,8 +57,11 @@ public class Comptes {
 			tempSolde = tempSolde - qte;
 			if (tempSolde >= 50) {
 				solde = solde - qte;
-				System.out.println("un montant de " + qte + " Euros a ete Retire sur ton compte. " + "Le nouveau solde est "
-						+ solde + " Euros");
+				String messageRetrait = "un montant de " + qte + " Euros a ete Retire sur le compte " +getNumCompte()+" de "+getNomTitulaire()+ ".Le nouveau solde est "
+						+ solde + " Euros";
+				System.out.println(messageRetrait);
+				
+				transactions.history(messageRetrait);
 			} else {
 				System.err.println("Solde insuffisant pour retirer " + qte + " Euros");
 			}
@@ -128,7 +135,7 @@ public class Comptes {
 
 	/**
 	 * @param solde
-	 *            the solde to set
+	 * the solde to set
 	 */
 	public void setSolde(float solde) {
 		this.solde = solde;
@@ -141,7 +148,9 @@ public class Comptes {
 	 */
 	@Override
 	public String toString() {
-		return numCompte + " " + idTitulaire + " " + nomTitulaire + " " + getSolde();
+		return "Nom du titulaire\t" + nomTitulaire  + "\nl'ID du Titulaire\t " + idTitulaire + "\nLe Numero du Compte\t  " + numCompte + "\nLa Balance\t\t " + getSolde() + " Euros\n";
 	}
+	
+	
 
 }
